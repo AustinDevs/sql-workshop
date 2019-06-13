@@ -1,0 +1,25 @@
+{
+  "name": "gitbook-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for generating a GitBook",
+  "repository": "git@github.com:AustinCodingAcademy/gitbook-boilerplate.git",
+  "license": "UNLISCENSED",
+  "private": true,
+  "dependencies": {
+    "gitbook": "^3.2.3",
+    "gitbook-cli": "^2.3.2",
+    "gitbook-plugin-collapsible-chapters": "^0.1.8",
+    "gitbook-plugin-edit-link": "^2.0.2",
+    "gitbook-plugin-ga": "^1.0.1",
+    "gitbook-plugin-hidden": "^1.2.0",
+    "gitbook-plugin-page-toc": "^1.1.0",
+    "gitbook-plugin-replace-with-index-html": "^1.0.9",
+    "gitbook-plugin-tonic-aca": "^1.2.1",
+    "gitbook-plugin-wide-page": "^1.0.1"
+  },
+  "scripts": {
+    "postinstall": "gitbook install",
+    "heroku-postbuild": "gitbook build",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  }
+}

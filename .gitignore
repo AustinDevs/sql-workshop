@@ -1,0 +1,5 @@
+node_modules
+_book
+*.orig
+.DS_Store
+*.log

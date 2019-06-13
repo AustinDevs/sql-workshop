@@ -1,0 +1,34 @@
+{
+  "plugins": [
+    "tonic-aca",
+    "edit-link",
+    "-sharing",
+    "collapsible-chapters",
+    "ga",
+    "wide-page",
+    "hidden",
+    "replace-with-index-html",
+    "page-toc"
+  ],
+  "pluginsConfig": {
+    "ga": {
+      "token": "UA-68821515-2",
+      "configuration": {
+        "name": ""
+      }
+    },
+    "edit-link": {
+      "base": "https://github.com/AustinCodingAcademy/dell1-gitbook/edit/master/",
+      "label": "Edit This Page"
+    },
+    "hidden": {
+      "usernames": ["aca-staff"]
+    },
+    "page-toc": {
+      "position": "top"
+    }
+  },
+  "structure": {
+    "readme": "home.md"
+  }
+}

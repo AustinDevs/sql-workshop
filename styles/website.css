@@ -1,0 +1,8 @@
+.hidden-style {
+  background-color: lightgray;
+  border: 3px solid black;
+}
+
+.gitbook-link {
+  display: none !important;
+}

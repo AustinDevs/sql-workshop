@@ -6,6 +6,7 @@
   "license": "UNLISCENSED",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "gitbook": "^3.2.3",
     "gitbook-cli": "^2.3.2",
     "gitbook-plugin-collapsible-chapters": "^0.1.8",

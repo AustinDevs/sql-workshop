@@ -1,8 +1,8 @@
 {
-  "name": "gitbook-boilerplate",
+  "name": "sql-workshop",
   "version": "1.0.0",
   "description": "Boilerplate for generating a GitBook",
-  "repository": "git@github.com:AustinCodingAcademy/gitbook-boilerplate.git",
+  "repository": "git@github.com:AustinCodingAcademy/sql-workshop.git",
   "license": "UNLISCENSED",
   "private": true,
   "dependencies": {
@@ -18,8 +18,7 @@
     "gitbook-plugin-wide-page": "^1.0.1"
   },
   "scripts": {
-    "postinstall": "gitbook install",
-    "heroku-postbuild": "gitbook build",
+    "postinstall": "gitbook install && gitbook build",
     "test": "echo \"Error: no test specified\" && exit 0"
   }
 }

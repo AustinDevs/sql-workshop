@@ -3,7 +3,7 @@
 ![logo](http://en.gravatar.com/userimage/107370100/a08594145564536138dfaaf072c7b241.png)
 # Austin Coding Academy
 
-## Gitbook Boilerplate
+## SQL Workshop
 
 ### Setup
 1. `git clone` repository

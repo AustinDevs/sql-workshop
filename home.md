@@ -43,7 +43,7 @@ In the right panel, we have a query-able representation of the database we'll be
 ### Querying
 
 The most basic query is to just list everything from a single table. Let's look
-at the `orders` table.
+at the `products` table.
 
 1. First, we will **always** `SELECT` the fields that we want: `SELECT products.Title, products.Price`
 2. Then we will **always** say `FROM` where the data is coming: `FROM products`

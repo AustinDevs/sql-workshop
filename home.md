@@ -2,7 +2,7 @@
 
 # SQL Workshop
 
-## What is it
+## SQL, What Is It?
 
 SQL (Structured Query Language) is a querying language, plain and simple.
 If you've ever used formulas in Excel or Google Sheets, you'll feel some
@@ -10,86 +10,80 @@ familiarity here. The reason why SQL exists is at some point
 the spreadsheet gets too large that it slows down, has too many sheets,
 or the formulas get too complex to maintain.
 
-## Why learn it
+## Why Learn It?
 
 SQL has a place in every industry:
 
-* software development
-* business intelligence
-* marketing analysis
-* algorithmic trading
-* data visualization
-* etc
+* Software development
+* Business intelligence
+* Marketing analysis
+* Algorithmic trading
+* Data visualization
+* Basically anywhere where there is data
 
 It is undoubtedly [one of the most valuable skills you can have](http://www.craigkerstiens.com/2019/02/12/sql-most-valuable-skill/).
 
 ## What does it look like
 
-First, let's contrast it to what we may already know about spreadsheets
-
-Excel Spreadsheet => SQL Database
+First, let's contrast it to what we may already know about spreadsheets.
 
 Sheet => Table
 
-The jargon is not too bad. Let's take a look at this overgrown spreadsheet, made up of many sheets.
+Spreadsheet (many sheets) => SQL Database (many tables)
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQvn5_JSY-1dgQwrsf3cSPmJ_HthuPLlmrLC-GbesIARErxPtGM-dyFRwUAmsziwXxXZeMo8ya8do_J/pubhtml?widget=true&amp;headers=false" width="100%" height="600" frameborder="0"></iframe>
+That's it. The jargon isn't too bad. Let's take a look at this spreadsheet, made up of many sheets.
 
-We have a perfect representation of the database we'll be playing with. Let's download
-and upload the database version of the same data.
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTTXN-1_aA94PnyhXiS_Cgq_NZ715Ykm-NtOfiPNoVzvuJvdWKfK6zrVHNUnqpIc-4OZRCLIREFTHX3/pubhtml?widget=true&amp;headers=false" width="100%" height="600" frameborder="0"></iframe>
 
-1. Download the database [chinook.db](./chinook.db)
-2. In the right panel, (or <a href="https://austindevs.github.io/sqljs.org/" target="blank">in a new window</a>) load the database
+In the right panel, we have a query-able representation of the database we'll be playing with, (or you can <a href="https://austindevs.github.io/sqljs.org/" target="blank">open in a new window</a>)
 
-We have a query-able representation of the database we'll be playing with in the right panel, (or <a href="https://austindevs.github.io/sqljs.org/" target="blank">open in a new window</a>)
-
-<iframe src="https://austincodingacademy.github.io/sqljs.org/" width="50%" height="700" frameborder="0" style="float:right"></iframe>
+<iframe src="https://austindevs.github.io/sqljs.org/" width="50%" height="700" frameborder="0" style="float:right"></iframe>
 
 ### Querying
 
 The most basic query is to just list everything from a single table. Let's look
 at the `orders` table.
 
-1. First, we **always** `SELECT` the fields that we want: `SELECT albums.Title`
-2. The we **always** write `FROM` where the data is coming: `FROM albums`
+1. First, we will **always** `SELECT` the fields that we want: `SELECT products.Title, products.Price`
+2. Then we will **always** say `FROM` where the data is coming: `FROM products`
 
 These are the absolutely necessary part of every query
 
 ```sql
 -- You can write comments like this
-SELECT albums.Title
-FROM albums; -- End your query with a semicolon
+SELECT products.Title, products.Price
+FROM products; -- End your query with a semicolon
 ```
 
 #### `ORDER BY`
 
 So maybe not too impressive. Let's try some magic tricks. Maybe we can start by
-`ORDER`ing them `BY` title.
+`ORDER`ing them `BY` price.
 
 ```sql
-SELECT albums.Title
-FROM albums
-ORDER BY albums.Title;
+SELECT products.Title, products.Price
+FROM products
+ORDER BY products.Price;
 ```
 
 This will order by _ascending_ order (small to big)
 You can also flip the order by using `DESC` (big to small)
 
 ```sql
-SELECT albums.Title
-FROM albums
-ORDER BY albums.Title DESC;
+SELECT products.Title, products.Price
+FROM products
+ORDER BY products.Price DESC;
 ```
 
 #### `WHERE`
 
-And we only want the ones that start with `Q`
+And what if we only want 'Watches', sorted by most expensive?
 
 ```sql
-SELECT albums.Title
-FROM albums
-WHERE albums.Title LIKE 'Q%'
-ORDER BY albums.Title;
+SELECT products.Title, products.Price
+FROM products
+WHERE products.Title LIKE '%watch%' -- The two % let us search the whole phrase for the word 'watch'
+ORDER BY products.Price DESC;
 ```
 
 Notice the order of the `WHERE` and the `ORDER BY` statements. The order of these
@@ -112,119 +106,117 @@ more powerful.
 
 If you like puzzles, you'll love joining. It's all about finding a column on
 one table that matches values on another table. For instance, look up at the
-`artists` table, and notice it has a `ArtistId` column. This is called the
-**Primary Key**, meaning that every artist can be associated with this id, and
+`people` table, and notice it has a `ID` column. This is called the
+**Primary Key**, meaning that every product can be associated with this id, and
 there are no duplicates.
 
-Now look at the `albums` table. It also has an `ArtistId` column. Each one of these
-numbers are referring to an id on the artists table. This is called a **Foreign Key**.
-You can have duplicates in this column because multiple `albums` can belong to the
-same artist. Let's join these tables together and view the artist for every album!
+Now look at the `orders` table. It has a `UserID` column. Each one of these
+numbers is referring to an ID on the `people` table. This is called a **Foreign Key**.
+You can have duplicates in this column because multiple `orders` can belong to the
+same person. Let's join these tables together and view the user's name and email for every order's total!
+
+Let's start with gathering our orders
 
 ```sql
-SELECT artists.Name, albums.Title
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId;
+SELECT orders.Total
+FROM orders;
 ```
 
-Let's join `tracks` on `albums`!
+Let's join `people` on `orders`!
 
 ```sql
-SELECT albums.Title, tracks.Name
-FROM albums
-JOIN tracks ON tracks.AlbumId = albums.AlbumId;
-```
-
-Let's join `artists`, `albums`, and `tracks`!
-
-```sql
-SELECT artists.Name, albums.Title, tracks.Name
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId
-JOIN tracks ON tracks.AlbumId = albums.AlbumId;
+SELECT orders.Total, people.Name, people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID;
 ```
 
 Here is a map of our database to help solve our "mazes"
 
-![sql-map](./chinook-map.jpg)
+![sql-map](./Sample Dataset.png)
 
 #### `GROUP BY`
 
-That's a real nice query, but that's a lot of duplicate data, and what if I want
-to know how many albums each artist had? Or how many tracks each album had? We
-can run another query to `GROUP BY` the columns with duplicates together, and
-count how many got squeezed.
+That's a real nice query, but that's a lot of duplicate data such as emails and names. And what if I want
+to know how much each customer has spent in all? Or how many orders each customer had? We
+can run another query to `GROUP BY` on a column that should be unique:
 
 ```sql
-SELECT artists.Name, albums.Title
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId
-GROUP BY artists.Name;
+SELECT orders.Total, people.Name, people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email;
 ```
 
-So this squeezed the `artists.Name`s together so there are now no duplicate, but
-it just gives the first album, not very helpful. What we can't see here is that
-all the albums are squished together also, even though it is only showing the first.
+So this squeezed the `people.Email`s together so there are now no duplicates, but
+it just gives the first order, not very helpful. What we can't see here is that
+all the orders are squished together also, even though it is only showing the first.
 We can count those albums using the `COUNT` function
 
 ```sql
-SELECT artists.Name, COUNT(albums.Title)
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId
-GROUP BY artists.Name;
+SELECT COUNT(people.Email), orders.Total, people.Name, people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email;
 ```
-
-So now let's `ORDER BY` the counts to see who has the most `albums`!
+And we can `SUM` toegether the squished totals.
 
 ```sql
-SELECT artists.Name, COUNT(albums.Title)
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId
-GROUP BY artists.Name
-ORDER BY COUNT(albums.Title) DESC;
+SELECT COUNT(people.Email), SUM(orders.Total), people.Name, people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email;
+```
+
+Let's clean up these columns a little:
+
+```sql
+SELECT
+   COUNT(people.Email) AS 'Number of Invoices',
+   ROUND(SUM(orders.Total), 2) AS 'Total',
+   people.Name,
+   people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email;
+```
+
+Using our `ORDER BY` and `DESC` statement, we can see who has orderd from us the most times!
+
+```sql
+SELECT
+   COUNT(people.Email) AS 'Number of Invoices',
+   ROUND(SUM(orders.Total), 2) AS 'Total',
+   people.Name,
+   people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email
+ORDER BY COUNT(people.Email) DESC;
 ```
 
 #### `LIMIT`
 
 `LIMIT` is pretty straightforward. It returns only the number of rows you need.
-Let's return the top 10 `artists` with the most `albums`.
+Let's return the top 10 `people` with the biggest `Total` spend.
 
 ```sql
-SELECT artists.Name, COUNT(albums.Title)
-FROM artists
-JOIN albums ON artists.ArtistId = albums.ArtistId
-GROUP BY artists.Name
-ORDER BY COUNT(albums.Title) DESC
+SELECT
+   COUNT(people.Email) AS 'Number of Invoices',
+   ROUND(SUM(orders.Total), 2) AS 'Total',
+   people.Name,
+   people.Email
+FROM orders
+JOIN people ON orders.UserID = people.ID
+GROUP BY people.Email
+ORDER BY SUM(orders.Total) DESC
 LIMIT 10;
 ```
 
-### Pivot Tables
+Resources and tutorials:
 
-You'll notice some tables looking a little slim on details, such as the `playlist_track`
-table. This is called a _Pivot_ table, or _Join_ table. It's only purpose is to
-join _many_ rows from one table to _many_ rows of another table. This creates a
-_many-to-many_ relationship, meaning many `tracks` can belong to many `playlist`, or
-a track can appear on more than one playlist and a playlist can have more than one
-track. You join them just the same, and can be very useful when trying to find a link
-between multiple tables, like a maze.
-
-```sql
-SELECT playlists.name, tracks.Name
-FROM playlists
-JOIN playlist_track ON playlists.PlaylistId = playlist_track.PlaylistId
-JOIN tracks ON tracks.TrackId = playlist_track.TrackId;
-```
-
-## Challenges
-
-1. Which albums have the most tracks?
-2. Which albums have the most track time?
-
-   * HINT: You can use the `SUM()` function on `tracks.milliseconds`
-
-3. Which `artists` have the most track time?
-4. Which `playlists` have the most `tracks`?
-5. Which `tracks` appears on the most `playlists`?
-6. Which `playlists` have the most track time?
+* [SQL Zoo](https://sqlzoo.net/)
+* [Codecademy: Learn SQL](https://www.codecademy.com/learn/learn-sql)
+* [Metabase tutorial: Everything you need to know to get started in under 20 min](https://www.youtube.com/watch?v=4bNp906oOhs)
+* [Metabase tutorial: Everything you need to know in under 40 min](https://www.actiondesk.io/blog/metabase-tutorial-everything-you-need-to-know-in-under-40min)
 
 {% include "./includes/footer.md" %}

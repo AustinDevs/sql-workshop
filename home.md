@@ -6,7 +6,7 @@
 
 SQL (Structured Query Language) is a querying language, plain and simple.
 If you've ever used formulas in Excel or Google Sheets, you'll feel some
-familiarity here. The reason why SQL exists is at some point
+familiarity here. The reason why SQL enters the conversation is at some point
 the spreadsheet gets too large that it slows down, has too many sheets,
 or the formulas get too complex to maintain.
 
@@ -21,7 +21,7 @@ SQL has a place in every industry:
 * Data visualization
 * Basically anywhere where there is data
 
-It is undoubtedly [one of the most valuable skills you can have](http://www.craigkerstiens.com/2019/02/12/sql-most-valuable-skill/).
+It is undoubtedly [one of the most valuable skills you can have](https://www.craigkerstiens.com/2019/02/12/sql-one-of-the-most-valuable-skills/).
 
 ## What does it look like
 

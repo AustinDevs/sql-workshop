@@ -21,7 +21,8 @@ SQL has a place in every industry:
 * Data visualization
 * Basically anywhere where there is data
 
-It is undoubtedly [one of the most valuable skills you can have](https://www.craigkerstiens.com/2019/02/12/sql-one-of-the-most-valuable-skills/).
+It is undoubtedly one of the most valuable skills you can have in any role that
+typical involves a spreadsheet, period.
 
 ## What does it look like
 

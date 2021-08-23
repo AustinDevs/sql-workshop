@@ -39,14 +39,16 @@ We have a perfect representation of the database we'll be playing with. Let's do
 and upload the database version of the same data.
 
 1. Download the database [chinook.db](./chinook.db)
-2. In the right panel, (or <a href="https://austincodingacademy.github.io/sqljs.org/" target="blank">in a new window</a>) load the database
+2. In the right panel, (or <a href="https://austindevs.github.io/sqljs.org/" target="blank">in a new window</a>) load the database
+
+We have a query-able representation of the database we'll be playing with in the right panel, (or <a href="https://austindevs.github.io/sqljs.org/" target="blank">open in a new window</a>)
 
 <iframe src="https://austincodingacademy.github.io/sqljs.org/" width="50%" height="700" frameborder="0" style="float:right"></iframe>
 
 ### Querying
 
 The most basic query is to just list everything from a single table. Let's look
-at the `albums` table.
+at the `orders` table.
 
 1. First, we **always** `SELECT` the fields that we want: `SELECT albums.Title`
 2. The we **always** write `FROM` where the data is coming: `FROM albums`

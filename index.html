@@ -17,15 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
-                
-            
-                
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-wide-page/wide.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-page-toc/page-toc.css">
                 
             
                 
@@ -158,69 +150,68 @@
                                 <section class="normal markdown-section">
                                 
                                 <div style="display: flex; align-items: center">
-  <img alt="logo" id="logo-img" src="https://en.gravatar.com/userimage/107370100/a08594145564536138dfaaf072c7b241.png">
-  <span style="margin: 0 10px; font-size: 36px; font-weight: bold">Austin Coding Academy</span>
+  <img alt="logo" id="logo-img" src="logo.png" style="height: 100px;">
 </div>
 
 <h1 id="sql-workshop">SQL Workshop</h1>
-<h2 id="what-is-it">What is it</h2>
+<h2 id="sql-what-is-it">SQL, What Is It?</h2>
 <p>SQL (Structured Query Language) is a querying language, plain and simple.
 If you&apos;ve ever used formulas in Excel or Google Sheets, you&apos;ll feel some
 familiarity here. The reason why SQL exists is at some point
 the spreadsheet gets too large that it slows down, has too many sheets,
 or the formulas get too complex to maintain.</p>
-<h2 id="why-learn-it">Why learn it</h2>
+<h2 id="why-learn-it">Why Learn It?</h2>
 <p>SQL has a place in every industry:</p>
 <ul>
-<li>software development</li>
-<li>business intelligence</li>
-<li>marketing analysis</li>
-<li>algorithmic trading</li>
-<li>data visualization</li>
-<li>etc</li>
+<li>Software development</li>
+<li>Business intelligence</li>
+<li>Marketing analysis</li>
+<li>Algorithmic trading</li>
+<li>Data visualization</li>
+<li>Basically anywhere where there is data</li>
 </ul>
 <p>It is undoubtedly <a href="http://www.craigkerstiens.com/2019/02/12/sql-most-valuable-skill/" target="_blank">one of the most valuable skills you can have</a>.</p>
 <h2 id="what-does-it-look-like">What does it look like</h2>
-<p>First, let&apos;s contrast it to what we may already know about spreadsheets</p>
-<p>Excel Spreadsheet =&gt; SQL Database</p>
+<p>First, let&apos;s contrast it to what we may already know about spreadsheets.</p>
 <p>Sheet =&gt; Table</p>
-<p>The jargon is not too bad. Let&apos;s take a look at this overgrown spreadsheet, made up of many sheets.</p>
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQvn5_JSY-1dgQwrsf3cSPmJ_HthuPLlmrLC-GbesIARErxPtGM-dyFRwUAmsziwXxXZeMo8ya8do_J/pubhtml?widget=true&amp;headers=false" width="100%" height="600" frameborder="0"></iframe>
+<p>Spreadsheet (many sheets) =&gt; SQL Database (many tables)</p>
+<p>That&apos;s it. The jargon isn&apos;t too bad. Let&apos;s take a look at this spreadsheet, made up of many sheets.</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTTXN-1_aA94PnyhXiS_Cgq_NZ715Ykm-NtOfiPNoVzvuJvdWKfK6zrVHNUnqpIc-4OZRCLIREFTHX3/pubhtml?widget=true&amp;headers=false" width="100%" height="600" frameborder="0"></iframe>
 
-<p>We have a perfect representation of the database we&apos;ll be playing with in the right panel, (or <a href="https://austincodingacademy.github.io/sqljs.org/" target="_blank">open in a new window </a>)</p>
-<iframe src="https://austincodingacademy.github.io/sqljs.org/" width="50%" height="700" frameborder="0" style="float:right"></iframe>
+<p>In the right panel, we have a query-able representation of the database we&apos;ll be playing with, (or you can <a href="https://austindevs.github.io/sqljs.org/" target="_blank">open in a new window</a>)</p>
+<iframe src="https://austindevs.github.io/sqljs.org/" width="50%" height="700" frameborder="0" style="float:right"></iframe>
 
 <h3 id="querying">Querying</h3>
 <p>The most basic query is to just list everything from a single table. Let&apos;s look
-at the <code>albums</code> table.</p>
+at the <code>orders</code> table.</p>
 <ol>
-<li>First, we <strong>always</strong> <code>SELECT</code> the fields that we want: <code>SELECT albums.Title</code></li>
-<li>The we <strong>always</strong> write <code>FROM</code> where the data is coming: <code>FROM albums</code></li>
+<li>First, we will <strong>always</strong> <code>SELECT</code> the fields that we want: <code>SELECT products.Title, products.Price</code></li>
+<li>Then we will <strong>always</strong> say <code>FROM</code> where the data is coming: <code>FROM products</code></li>
 </ol>
 <p>These are the absolutely necessary part of every query</p>
 <pre><code class="lang-sql"><span class="hljs-comment">-- You can write comments like this</span>
-<span class="hljs-keyword">SELECT</span> albums.Title
-<span class="hljs-keyword">FROM</span> albums; <span class="hljs-comment">-- End your query with a semicolon</span>
+<span class="hljs-keyword">SELECT</span> products.Title, products.Price
+<span class="hljs-keyword">FROM</span> products; <span class="hljs-comment">-- End your query with a semicolon</span>
 </code></pre>
 <h4 id="order-by"><code>ORDER BY</code></h4>
 <p>So maybe not too impressive. Let&apos;s try some magic tricks. Maybe we can start by
-<code>ORDER</code>ing them <code>BY</code> title.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> albums.Title
-<span class="hljs-keyword">FROM</span> albums
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> albums.Title;
+<code>ORDER</code>ing them <code>BY</code> price.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> products.Title, products.Price
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> products.Price;
 </code></pre>
 <p>This will order by <em>ascending</em> order (small to big)
 You can also flip the order by using <code>DESC</code> (big to small)</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> albums.Title
-<span class="hljs-keyword">FROM</span> albums
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> albums.Title <span class="hljs-keyword">DESC</span>;
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> products.Title, products.Price
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> products.Price <span class="hljs-keyword">DESC</span>;
 </code></pre>
 <h4 id="where"><code>WHERE</code></h4>
-<p>And we only want the ones that start with <code>Q</code></p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> albums.Title
-<span class="hljs-keyword">FROM</span> albums
-<span class="hljs-keyword">WHERE</span> albums.Title <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&apos;Q%&apos;</span>
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> albums.Title;
+<p>And what if we only want &apos;Watches&apos;, sorted by most expensive?</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> products.Title, products.Price
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> products.Title <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&apos;%watch%&apos;</span> <span class="hljs-comment">-- The two % let us search the whole phrase for the word &apos;watch&apos;</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> products.Price <span class="hljs-keyword">DESC</span>;
 </code></pre>
 <p>Notice the order of the <code>WHERE</code> and the <code>ORDER BY</code> statements. The order of these
 statements are the first &quot;gotcha&quot;. A quick cheatsheet for the order of the most
@@ -240,96 +231,87 @@ you might have used something similar like <code>VLOOKUP</code>, but SQL <code>J
 more powerful.</p>
 <p>If you like puzzles, you&apos;ll love joining. It&apos;s all about finding a column on
 one table that matches values on another table. For instance, look up at the
-<code>artists</code> table, and notice it has a <code>ArtistId</code> column. This is called the
-<strong>Primary Key</strong>, meaning that every artist can be associated with this id, and
+<code>people</code> table, and notice it has a <code>ID</code> column. This is called the
+<strong>Primary Key</strong>, meaning that every product can be associated with this id, and
 there are no duplicates.</p>
-<p>Now look at the <code>albums</code> table. It also has an <code>ArtistId</code> column. Each one of these
-numbers are referring to an id on the artists table. This is called a <strong>Foreign Key</strong>.
-You can have duplicates in this column because multiple <code>albums</code> can belong to the
-same artist. Let&apos;s join these tables together and view the artist for every album!</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, albums.Title
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId;
+<p>Now look at the <code>orders</code> table. It has a <code>UserID</code> column. Each one of these
+numbers is referring to an ID on the <code>people</code> table. This is called a <strong>Foreign Key</strong>.
+You can have duplicates in this column because multiple <code>orders</code> can belong to the
+same person. Let&apos;s join these tables together and view the user&apos;s name and email for every order&apos;s total!</p>
+<p>Let&apos;s start with gathering our orders</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> orders.Total
+<span class="hljs-keyword">FROM</span> orders;
 </code></pre>
-<p>Let&apos;s join <code>tracks</code> on <code>albums</code>!</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> albums.Title, tracks.<span class="hljs-keyword">Name</span>
-<span class="hljs-keyword">FROM</span> albums
-<span class="hljs-keyword">JOIN</span> tracks <span class="hljs-keyword">ON</span> tracks.AlbumId = albums.AlbumId;
-</code></pre>
-<p>Let&apos;s join <code>artists</code>, <code>albums</code>, and <code>tracks</code>!</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, albums.Title, tracks.<span class="hljs-keyword">Name</span>
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId
-<span class="hljs-keyword">JOIN</span> tracks <span class="hljs-keyword">ON</span> tracks.AlbumId = albums.AlbumId;
+<p>Let&apos;s join <code>people</code> on <code>orders</code>!</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> orders.Total, people.<span class="hljs-keyword">Name</span>, people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>;
 </code></pre>
 <p>Here is a map of our database to help solve our &quot;mazes&quot;</p>
-<p><img src="chinook-map.jpg" alt="sql-map"></p>
+<p><img src="Sample Dataset.png" alt="sql-map"></p>
 <h4 id="group-by"><code>GROUP BY</code></h4>
-<p>That&apos;s a real nice query, but that&apos;s a lot of duplicate data, and what if I want
-to know how many albums each artist had? Or how many tracks each album had? We
-can run another query to <code>GROUP BY</code> the columns with duplicates together, and
-count how many got squeezed.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, albums.Title
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> artists.<span class="hljs-keyword">Name</span>;
+<p>That&apos;s a real nice query, but that&apos;s a lot of duplicate data such as emails and names. And what if I want
+to know how much each customer has spent in all? Or how many orders each customer had? We
+can run another query to <code>GROUP BY</code> on a column that should be unique:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> orders.Total, people.<span class="hljs-keyword">Name</span>, people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email;
 </code></pre>
-<p>So this squeezed the <code>artists.Name</code>s together so there are now no duplicate, but
-it just gives the first album, not very helpful. What we can&apos;t see here is that
-all the albums are squished together also, even though it is only showing the first.
+<p>So this squeezed the <code>people.Email</code>s together so there are now no duplicates, but
+it just gives the first order, not very helpful. What we can&apos;t see here is that
+all the orders are squished together also, even though it is only showing the first.
 We can count those albums using the <code>COUNT</code> function</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">COUNT</span>(albums.Title)
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> artists.<span class="hljs-keyword">Name</span>;
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(people.Email), orders.Total, people.<span class="hljs-keyword">Name</span>, people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email;
 </code></pre>
-<p>So now let&apos;s <code>ORDER BY</code> the counts to see who has the most <code>albums</code>!</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">COUNT</span>(albums.Title)
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> artists.<span class="hljs-keyword">Name</span>
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">COUNT</span>(albums.Title) <span class="hljs-keyword">DESC</span>;
+<p>And we can <code>SUM</code> toegether the squished totals.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(people.Email), <span class="hljs-keyword">SUM</span>(orders.Total), people.<span class="hljs-keyword">Name</span>, people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email;
+</code></pre>
+<p>Let&apos;s clean up these columns a little:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+   <span class="hljs-keyword">COUNT</span>(people.Email) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Number of Invoices&apos;</span>,
+   <span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(orders.Total), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Total&apos;</span>,
+   people.<span class="hljs-keyword">Name</span>,
+   people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email;
+</code></pre>
+<p>Using our <code>ORDER BY</code> and <code>DESC</code> statement, we can see who has orderd from us the most times!</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+   <span class="hljs-keyword">COUNT</span>(people.Email) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Number of Invoices&apos;</span>,
+   <span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(orders.Total), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Total&apos;</span>,
+   people.<span class="hljs-keyword">Name</span>,
+   people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">COUNT</span>(people.Email) <span class="hljs-keyword">DESC</span>;
 </code></pre>
 <h4 id="limit"><code>LIMIT</code></h4>
 <p><code>LIMIT</code> is pretty straightforward. It returns only the number of rows you need.
-Let&apos;s return the top 10 <code>artists</code> with the most <code>albums</code>.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> artists.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">COUNT</span>(albums.Title)
-<span class="hljs-keyword">FROM</span> artists
-<span class="hljs-keyword">JOIN</span> albums <span class="hljs-keyword">ON</span> artists.ArtistId = albums.ArtistId
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> artists.<span class="hljs-keyword">Name</span>
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">COUNT</span>(albums.Title) <span class="hljs-keyword">DESC</span>
+Let&apos;s return the top 10 <code>people</code> with the biggest <code>Total</code> spend.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+   <span class="hljs-keyword">COUNT</span>(people.Email) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Number of Invoices&apos;</span>,
+   <span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(orders.Total), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> <span class="hljs-string">&apos;Total&apos;</span>,
+   people.<span class="hljs-keyword">Name</span>,
+   people.Email
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">JOIN</span> people <span class="hljs-keyword">ON</span> orders.UserID = people.<span class="hljs-keyword">ID</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> people.Email
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">SUM</span>(orders.Total) <span class="hljs-keyword">DESC</span>
 <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
 </code></pre>
-<h3 id="pivot-tables">Pivot Tables</h3>
-<p>You&apos;ll notice some tables looking a little slim on details, such as the <code>playlist_track</code>
-table. This is called a <em>Pivot</em> table, or <em>Join</em> table. It&apos;s only purpose is to
-join <em>many</em> rows from one table to <em>many</em> rows of another table. This creates a
-<em>many-to-many</em> relationship, meaning many <code>tracks</code> can belong to many <code>playlist</code>, or
-a track can appear on more than one playlist and a playlist can have more than one
-track. You join them just the same, and can be very useful when trying to find a link
-between multiple tables, like a maze.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> playlists.<span class="hljs-keyword">name</span>, tracks.<span class="hljs-keyword">Name</span>
-<span class="hljs-keyword">FROM</span> playlists
-<span class="hljs-keyword">JOIN</span> playlist_track <span class="hljs-keyword">ON</span> playlists.PlaylistId = playlist_track.PlaylistId
-<span class="hljs-keyword">JOIN</span> tracks <span class="hljs-keyword">ON</span> tracks.TrackId = playlist_track.TrackId;
-</code></pre>
-<h2 id="challenges">Challenges</h2>
-<ol>
-<li>Which albums have the most tracks?</li>
-<li><p>Which albums have the most track time?</p>
-<ul>
-<li>HINT: You can use the <code>SUM()</code> function on <code>tracks.milliseconds</code></li>
-</ul>
-</li>
-<li><p>Which <code>artists</code> have the most track time?</p>
-</li>
-<li>Which <code>playlists</code> have the most <code>tracks</code>?</li>
-<li>Which <code>tracks</code> appears on the most <code>playlists</code>?</li>
-<li>Which <code>playlists</code> have the most track time?</li>
-</ol>
-<p></p><p style="text-align: center">&#xA9; 2019 Austin Coding Academy</p><p></p>
+<p></p><p style="text-align: center">&#xA9; 2021 Austin Devs, LLC</p><p></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
 <script>
+  localStorage.setItem(':sidebar', false);
   fetch('/_book/gitbook/style.css').catch(function(error) {
     window.location = window.location.href;
   });
@@ -370,7 +352,7 @@ between multiple tables, like a maze.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Home","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["tonic-aca","edit-link","-sharing","collapsible-chapters","ga","wide-page","hidden","replace-with-index-html","page-toc"],"pluginsConfig":{"search":{},"collapsible-chapters":{},"wide-page":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"hidden":{"usernames":["aca-staff"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace-with-index-html":{},"ga":{"configuration":{"name":""},"token":"UA-68821515-2"},"edit-link":{"label":"Edit This Page","base":"https://github.com/AustinCodingAcademy/dell1-gitbook/edit/master/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"tonic-aca":{}},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"home.md","mtime":"2019-06-24T19:32:49.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-24T19:32:52.777Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Home","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","wide-page","replace-with-index-html"],"pluginsConfig":{"wide-page":{},"replace-with-index-html":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"home.md","mtime":"2021-08-23T14:12:32.658Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-23T14:13:08.749Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -380,35 +362,7 @@ between multiple tables, like a maze.</p>
     <script src="gitbook/theme.js"></script>
     
         
-        <script src="https://embed.tonicdev.com"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-tonic-aca/plugin.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
-        
-    
-        
         <script src="gitbook/gitbook-plugin-replace-with-index-html/replace.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
         
     
         

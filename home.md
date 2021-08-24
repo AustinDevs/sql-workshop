@@ -22,7 +22,7 @@ SQL has a place in every industry:
 * Basically anywhere where there is data
 
 It is undoubtedly one of the most valuable skills you can have in any role that
-typical involves a spreadsheet, period.
+typically involves a spreadsheet, period.
 
 ## What does it look like
 
